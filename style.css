@@ -10,3 +10,16 @@ button, a { font: inherit; font-size: clamp(1.35rem, 6vw, 2rem); background: #59
   h1 { font-size: 1.75rem; }
   button, a { font-size: 1.4rem; }
 }
+body {
+  background: radial-gradient(ellipse at 50% 42%, #402533, #211520 65%, #191119);
+  color: #ffd5e3;
+}
+.buttons a { background: #f3adca; color: #411d31; }
+.buttons button { background: #543849; color: #ffe4ee; }
+.portrait { position: relative; width: 100%; height: min(62vw, 435px, 60svh); }
+.portrait img { position: absolute; inset: 0; height: 100%; object-fit: contain; }
+.portrait img { opacity: 0; transition: opacity 140ms ease-out; }
+.portrait[data-mood="solo"] img:first-child { opacity: 1; }
+.portrait[data-mood="happy"] .happy, .portrait[data-mood="confused"] .confused { opacity: 1; }
+@media (orientation: landscape) and (max-height: 500px) { .portrait { height: 48svh; } }
+@media (prefers-reduced-motion: reduce) { .portrait img { transition: none; } }

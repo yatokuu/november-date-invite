@@ -1,5 +1,18 @@
+const portrait = document.querySelector('.portrait');
+const yesButton = document.querySelector('a');
+function show(mood) {
+  portrait.dataset.mood = mood;
+}
+for (const event of ['pointerenter', 'pointerdown', 'focus']) {
+  yesButton.addEventListener(event, () => show('happy'));
+}
+for (const event of ['pointerleave', 'blur']) {
+  yesButton.addEventListener(event, () => show('solo'));
+}
 const no = document.querySelector('#no');
 function dodge() {
+  no.parentElement.style.width = no.offsetWidth + "px";
+  show("confused");
   const yes = document.querySelector('a').getBoundingClientRect();
   const maxTop = Math.max(0, window.innerHeight - no.offsetHeight);
   const top = Math.random() * maxTop;
