@@ -39,3 +39,9 @@ body {
   from { transform: rotate(var(--angle)) translateY(-3px) scale(.5); }
   to { transform: rotate(var(--angle)) translateY(clamp(-84px,-12vw,-42px)) scale(.55); }
 }
+.sky span { color: #ffbece; }
+.sky span:nth-child(even) { color: #ffdf92; }
+.sky i { width: 4px; height: 17px; }
+@media (prefers-reduced-motion: reduce) {
+  .sky span:nth-child(-n+4) i { opacity: .85; transform: rotate(var(--angle)) translateY(-24px); }
+}
