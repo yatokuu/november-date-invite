@@ -23,3 +23,22 @@ body {
 .portrait[data-mood="happy"] .happy, .portrait[data-mood="confused"] .confused { opacity: 1; }
 @media (orientation: landscape) and (max-height: 500px) { .portrait { height: 48svh; } }
 @media (prefers-reduced-motion: reduce) { .portrait img { transition: none; } }
+
+.celebration .photo { position: relative; }
+.sparks { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.sparks span { position: absolute; left: 13%; top: 27%; --delay: 70ms; color: #ffe0ad; }
+.sparks span + span { left: 87%; top: 64%; --delay: 240ms; color: #ffc1d6; }
+.sparks i { position: absolute; width: 3px; height: 11px; border-radius: 60%; background: currentColor; box-shadow: 0 0 7px currentColor; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .celebration .photo { animation: photo-arrives 340ms cubic-bezier(.2,.75,.3,1) both; }
+  .sparks i { animation: spark-out 850ms var(--delay) cubic-bezier(.18,.72,.34,1) both; }
+}
+@keyframes photo-arrives {
+  from { transform: scale(.98); }
+  to { transform: scale(1); }
+}
+@keyframes spark-out {
+  0% { opacity: 0; transform: rotate(var(--angle)) translateY(-4px) scale(.35); }
+  22% { opacity: .95; }
+  100% { opacity: 0; transform: rotate(var(--angle)) translateY(clamp(-66px,-9vw,-32px)) scale(.4); }
+}
